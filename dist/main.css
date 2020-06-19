@@ -1,6 +1,7 @@
 body {
-  background-color: bisque; }
+  background-color: aliceblue; }
 
-body {
-  background-color: aqua; }
+.container {
+  width: 1180px;
+  margin: 0 auto; }
 
