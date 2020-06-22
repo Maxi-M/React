@@ -8,9 +8,14 @@ export class UserList extends Component{
     render() {
         return (
             <div className='user-list'>
-                <p>dfdfdfd</p>
-                <p>qqqq</p>
-                <p>qqqqqq</p>
+                <div className="sidebar__header user-list__header">
+                    Сейчас в чате
+                </div>
+                <div className="sidebar__content user-list__users">
+                    <p>Чат 1</p>
+                    <p>Чат 2</p>
+                    <p>Чат 3</p>
+                </div>
             </div>
         );
     }
