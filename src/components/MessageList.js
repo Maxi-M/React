@@ -24,7 +24,11 @@ export class MessageList extends Component{
     }
     interval = null;
 
-
+    addMessage(message) {
+        this.setState({
+            messages: this.state.messages.concat(message),
+        })
+    }
 
     // componentDidMount() {
     //     this.interval = setInterval(() => {}, 5000);

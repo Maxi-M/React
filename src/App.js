@@ -8,14 +8,14 @@ export class App extends Component{
 
     }
     handleMessageSend = (message) => {
-
+        this.refs.messages.addMessage(message);
     }
 
     render() {
         return (
             <div className='container'>
                 <div className="panel">
-                    <MessageList />
+                    <MessageList ref="messages"/>
                     <UserList />
                 </div>
                 <MessageForm onSend={this.handleMessageSend} />

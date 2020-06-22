@@ -13,14 +13,23 @@ export class MessageForm extends Component {
     }
 
     handleMessageSend = () => {
+        const handler = this.props.onSend;
+        if (typeof handler  === 'function') {
+            handler({
+                author: this.state.author,
+                time: "XX.XX.XX",
+                text: this.state.text
+            })
 
+            this.setState({text: ""})
+        }
     }
 
     render() {
         const {value} = this.state;
         return (
             <div className='message-form'>
-                <input className="message-form__input" type="text" name="text" value={value} placeholder="Message..."
+                <input className="message-form__input" type="text" name="text" value={this.state.text} placeholder="Message..."
                        onChange={this.handleInputChange}
                 />
                 <button className="message-form__button" onClick={this.handleMessageSend}>Отправить</button>
