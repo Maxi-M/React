@@ -51,8 +51,8 @@ body {
     flex-direction: row;
     max-width: 900px;
     height: 50px;
-    border: 1px solid #CCCCCC;
-    border-radius: 5px;
+    //border: 1px solid #CCCCCC;
+    //border-radius: 5px;
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
@@ -67,7 +67,6 @@ body {
         max-width: 75px;
     }
 }
-
 
 .message {
     &-list {
@@ -84,6 +83,7 @@ body {
         flex-direction: row;
         width: 840px;
         overflow-x: hidden;
+
         margin-bottom: 10px;
         &__time {
             margin-right: 10px;
@@ -93,18 +93,24 @@ body {
             font-weight: 700;
         }
         &__text {
-
+            &_bot {
+                font-style: italic;
+                border: 1px #CCCCCC dashed;
+            }
         }
+
     }
 
 }
 
 .sidebar {
     width: 270px;
-    border: 1px solid #CCCCCC;
-    border-radius: 5px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &__header {
+        border: 1px solid slategray;
         height: 30px;
         background-color: slategray;
         line-height: 30px;
@@ -117,11 +123,34 @@ body {
     }
     &__content {
         padding: 15px 15px;
+        border: 1px solid #CCCCCC;
+        border-top: none;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 }
 
 .user-list {
+    &__content {
+        overflow: auto;
+        padding: 0;
 
+    }
+    &__list {
+        height: 180px;
+        overflow: auto;
+    }
+}
+
+.chat-list {
+    &__content {
+        overflow: auto;
+        padding: 0;
+    }
+    &__list {
+        height: 180px;
+        overflow: auto;
+    }
 }
 
 .footer {

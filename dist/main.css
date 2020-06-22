@@ -46,8 +46,6 @@ body {
   flex-direction: row;
   max-width: 900px;
   height: 50px;
-  border: 1px solid #CCCCCC;
-  border-radius: 5px;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
@@ -78,13 +76,18 @@ body {
   .message-item__author {
     margin-right: 10px;
     font-weight: 700; }
+  .message-item__text_bot {
+    font-style: italic;
+    border: 1px #CCCCCC dashed; }
 
 .sidebar {
   width: 270px;
-  border: 1px solid #CCCCCC;
-  border-radius: 5px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
   .sidebar__header {
+    border: 1px solid slategray;
     height: 30px;
     background-color: slategray;
     line-height: 30px;
@@ -95,7 +98,27 @@ body {
     text-align: center;
     font-weight: 700; }
   .sidebar__content {
-    padding: 15px 15px; }
+    padding: 15px 15px;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px; }
+
+.user-list__content {
+  overflow: auto;
+  padding: 0; }
+
+.user-list__list {
+  height: 180px;
+  overflow: auto; }
+
+.chat-list__content {
+  overflow: auto;
+  padding: 0; }
+
+.chat-list__list {
+  height: 180px;
+  overflow: auto; }
 
 .footer {
   display: block;
