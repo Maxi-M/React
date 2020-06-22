@@ -9,6 +9,15 @@ export class App extends Component{
     }
     handleMessageSend = (message) => {
         this.refs.messages.addMessage(message);
+
+        setTimeout(() => {
+            const {author} = this.refs.messages.state.messages[this.refs.messages.state.messages.length - 1];
+            this.refs.messages.addMessage({
+                author: "Bot",
+                text: `Привет ${author}, сообщение принято`,
+                time: "00:00:00"
+            });
+        }, 1000)
     }
 
     render() {

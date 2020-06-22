@@ -15,12 +15,13 @@ export class MessageForm extends Component {
     handleMessageSend = () => {
         const handler = this.props.onSend;
         if (typeof handler  === 'function') {
-            handler({
-                author: this.state.author,
-                time: "XX.XX.XX",
-                text: this.state.text
-            })
-
+            if (this.state.text.trim()) {
+                handler({
+                    author: this.state.author,
+                    time: "00:00:00",
+                    text: this.state.text
+                })
+            }
             this.setState({text: ""})
         }
     }

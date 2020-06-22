@@ -79,12 +79,23 @@ body {
     margin-right: 10px;
     font-weight: 700; }
 
-.user-list {
+.sidebar {
   width: 270px;
   border: 1px solid #CCCCCC;
   border-radius: 5px;
-  padding: 15px 30px;
   box-sizing: border-box; }
+  .sidebar__header {
+    height: 30px;
+    background-color: slategray;
+    line-height: 30px;
+    box-sizing: border-box;
+    padding-left: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    font-weight: 700; }
+  .sidebar__content {
+    padding: 15px 15px; }
 
 .footer {
   display: block;

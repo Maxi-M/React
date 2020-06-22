@@ -9,17 +9,17 @@ export class MessageList extends Component{
         messages: [
             {
                 author: "Пользователь1",
-                time: "XX.XX.XX",
+                time: "00:00:00",
                 text: "Какое-то сообщение 1"
             },
             {
                 author: "Пользователь2",
-                time: "XX.XX.XX",
+                time: "00:00:00",
                 text: "Какое-то сообщение в ответ на первое"
             },
             {
                 author: "Пользователь1",
-                time: "XX.XX.XX",
+                time: "00:00:00",
                 text: "Какое-то сообщение 2"
             },
         ],
