@@ -10,9 +10,15 @@ module.exports = {
         filename: 'bundle.js',
     },
 
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src', 'components'),
+        }
+    },
     module: {
         rules: [
-            {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
+            {test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader"},
             {test: /\.s?css$/i, use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],},
         ]
     },
