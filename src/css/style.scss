@@ -36,14 +36,16 @@ body {
 .panel {
     width: 100%;
     display: flex;
-    flex: 1 0 auto;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 10px;
     overflow-y: hidden;
-    height: calc(100% - 180px);
+    height: calc(100% - 70px);
 }
-
+.content {
+    height: calc(100% - 120px);
+    flex: 1 0 auto;
+}
 .message-form {
     flex: 0 0 auto;
     margin-top: 10px;
