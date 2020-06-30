@@ -4,20 +4,21 @@ import {routes} from './routes'
 import {Link} from 'react-router-dom';
 
 export class App extends Component{
-
-
     render() {
         return (
+            <BrowserRouter>
             <div className='container'>
                 <div className="header">
+                    <Link to={'/'}>Home</Link>&nbsp;&nbsp;&nbsp;
+                    <Link to={'/profile'}>Profile</Link>
                 </div>
-                <BrowserRouter>
                     <Switch>
                         {routes.map((route, index) => <Route key={index} {...route}/>)}
                     </Switch>
-                </BrowserRouter>
+
                 <footer className="footer">&copy; Moskovskiy 2020</footer>
             </div>
+            </BrowserRouter>
         );
     }
 }

@@ -5,10 +5,6 @@ import {MessageListItem} from "./MessageListItem";
 export class MessageList extends Component {
     list = null;
 
-    state = {
-
-    }
-
     componentDidMount() {
         this.list = document.querySelector('.message-list');
     }
@@ -18,9 +14,10 @@ export class MessageList extends Component {
     }
 
     render() {
+        const {messages} = this.props;
         return (
             <div className='message-list'>
-                {this.props.messages.map((message, index) => {
+                {messages.map((message, index) => {
                     return <MessageListItem key={index} author={message.author} text={message.text}
                                             time={message.time}/>
                 })}
