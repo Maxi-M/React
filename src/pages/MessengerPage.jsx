@@ -31,13 +31,13 @@ export class MessengerPage extends Component {
         return (
             <div className="content">
                 <div className="panel">
-                    <MessageList ref="messages" messages={messages}/>
+                    {messages ? <MessageList ref="messages" messages={messages}/> : 'Чат не выбран'}
                     <div className="sidebar">
                         <UserList/>
                         <ChatList chats={chats}/>
                     </div>
                 </div>
-                <MessageForm onSend={sendMessage}/>
+                {messages && <MessageForm onSend={sendMessage}/>}
             </div>
         )
     }

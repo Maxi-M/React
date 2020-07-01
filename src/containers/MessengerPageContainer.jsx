@@ -33,7 +33,7 @@ function mapStateToProps(state, ownProps) {
     const chats = state.chats.entries;
 
     const {match} = ownProps;
-    let messages = [];
+    let messages = null;
     if (match && chats[match.params.id]) {
         messages = chats[match.params.id].messages;
     }
