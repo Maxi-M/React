@@ -75,8 +75,23 @@ export const chatsReducer = (state = initialState, action) => {
                 entries: dataBackend,
             };
         case CHATS_SEND:
+            console.log(action.payload.chatId);
             return {
-
+                ...state,
+                entries: {
+                    ...state.entries,
+                    [action.payload.chatId]: {
+                        ...state.entries[action.payload.chatId],
+                        messages: [
+                            ...state.entries[action.payload.chatId].messages,
+                            {
+                                time: action.payload.time,
+                                author: action.payload.author,
+                                text: action.payload.text
+                            }
+                        ]
+                    }
+                }
             };
         default:
             return state;

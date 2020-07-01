@@ -27,7 +27,7 @@ export class MessengerPage extends Component {
     // }
 
     render() {
-        const {chats, messages} = this.props;
+        const {chats, messages, sendMessage} = this.props;
         return (
             <div className="content">
                 <div className="panel">
@@ -37,7 +37,7 @@ export class MessengerPage extends Component {
                         <ChatList chats={chats}/>
                     </div>
                 </div>
-                {/*<MessageForm onSend={this.handleMessageSend}/>*/}
+                <MessageForm onSend={sendMessage}/>
             </div>
         )
     }

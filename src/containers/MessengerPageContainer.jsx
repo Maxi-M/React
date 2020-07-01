@@ -6,22 +6,15 @@ import {chatsLoad, chatsSend} from "actions/chats";
 
 class MessengerPageContainer extends Component {
     componentDidMount() {
-
         const {chatsLoadAction} = this.props;
         chatsLoadAction();
     }
 
     handleMessageSend = (message) => {
-        const {chats} = this.state;
-        const chat = this.state.chats[this.currentChat];
-
-        chat.messages = chat.messages.concat([message]);
-
-        this.setState({
-            chats: {
-                ...chats,
-                [this.currentChat]: chat
-            }
+        const {chatId, chatsSendAction} = this.props
+        chatsSendAction({
+            ...message,
+            chatId
         });
         // if (message.author !== 'Bot') {
         //     this.handleBotReply(message);
@@ -31,7 +24,7 @@ class MessengerPageContainer extends Component {
     render() {
         const {chatId, chats, messages} = this.props;
         return (
-            <MessengerPage messages={messages} chats={chats} />
+            <MessengerPage messages={messages} chats={chats} sendMessage={this.handleMessageSend}/>
         );
     }
 }
@@ -40,8 +33,7 @@ function mapStateToProps(state, ownProps) {
     const chats = state.chats.entries;
 
     const {match} = ownProps;
-    let messages = null;
-
+    let messages = [];
     if (match && chats[match.params.id]) {
         messages = chats[match.params.id].messages;
     }

@@ -17,12 +17,12 @@ export class ChatList extends Component {
                 <div className="sidebar__content chat-list__content">
                     <List className="chat-list__list" component="nav">
                         {chats.map((chat, index) => {
-                            <Link to={chat.link}>
+                            return <Link key={index} to={chat.link}>
                                 <ListItem key={index} button>
                                     <ListItemText primary={chat.name}/>
                                 </ListItem>
                             </Link>
-                        })};
+                        })}
                     </List>
                 </div>
             </div>
