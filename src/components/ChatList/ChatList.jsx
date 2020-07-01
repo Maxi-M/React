@@ -6,22 +6,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import {Link} from 'react-router-dom';
 
 export class ChatList extends Component {
-    state = {
-        chats: this.props.chats,
-    }
 
     render() {
-        let chatComponents =[];
-
-        for (let chatKey in this.props.chats) {
-            chatComponents.push(
-                <ListItem key={chatKey} button>
-                    <Link to={`/chats/${chatKey}`}>
-                        <ListItemText primary={this.props.chats[chatKey].name}/>
-                    </Link>
-                </ListItem>
-            );
-        }
+        const {chats} = this.props;
         return (
             <div className='chat-list'>
                 <div className="sidebar__header chat-list__header">
@@ -29,7 +16,13 @@ export class ChatList extends Component {
                 </div>
                 <div className="sidebar__content chat-list__content">
                     <List className="chat-list__list" component="nav">
-                        {[...chatComponents]}
+                        {chats.map((chat, index) => {
+                            return <Link key={index} to={chat.link}>
+                                <ListItem key={index} button>
+                                    <ListItemText primary={chat.name}/>
+                                </ListItem>
+                            </Link>
+                        })}
                     </List>
                 </div>
             </div>
