@@ -3,23 +3,17 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 
 export class MessageListItem extends Component{
-    state = {
-        message: {
-            author: this.props.author,
-            text: this.props.text,
-            time: this.props.time,
-        }
-    }
     render() {
+        const {author, time, text} = this.props;
         const classes = classNames('message-item__text', {
-            'message-item__text_bot': this.state.message.author === 'Bot'
+            'message-item__text_bot': author === 'Bot'
         })
 
         return (
-            <div key={this.state.message.key} className="message-item">
-                <span className="message-item__time">{this.state.message.time}</span>
-                <span className="message-item__author">{this.state.message.author}:</span>
-                <span className={classes}>{this.state.message.text}</span>
+            <div className="message-item">
+                <span className="message-item__time">{time}</span>
+                <span className="message-item__author">{author}:</span>
+                <span className={classes}>{text}</span>
             </div>
         );
     }
