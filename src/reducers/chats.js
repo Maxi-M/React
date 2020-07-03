@@ -67,6 +67,8 @@ const dataBackend = {
 
 import {CHATS_LOAD, CHATS_SEND} from "actions/chats";
 
+import update from 'react-addons-update';
+
 export const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHATS_LOAD:
@@ -75,24 +77,19 @@ export const chatsReducer = (state = initialState, action) => {
                 entries: dataBackend,
             };
         case CHATS_SEND:
-            console.log(action.payload.chatId);
-            return {
-                ...state,
-                entries: {
-                    ...state.entries,
-                    [action.payload.chatId]: {
-                        ...state.entries[action.payload.chatId],
-                        messages: [
-                            ...state.entries[action.payload.chatId].messages,
-                            {
-                                time: action.payload.time,
-                                author: action.payload.author,
-                                text: action.payload.text
+            return update(state, {
+                    entries: {
+                        [action.payload.chatId]: {
+                            messages: {
+                                $push: [{
+                                    text: action.payload.text,
+                                    author: action.payload.author,
+                                    time: action.payload.time
+                                }]
                             }
-                        ]
+                        }
                     }
-                }
-            };
+                });
         default:
             return state;
     }
