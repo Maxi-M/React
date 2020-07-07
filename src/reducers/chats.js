@@ -1,5 +1,10 @@
+import {CHATS_LOAD, CHATS_SEND, CHATS_ADD, CHATS_DELETE} from "actions/chats";
+
+import update from 'react-addons-update';
+
 const initialState = {
-    entries: {}
+    entries: {},
+    lastMessageFrom: '',
 }
 
 const dataBackend = {
@@ -65,9 +70,6 @@ const dataBackend = {
     }
 }
 
-import {CHATS_LOAD, CHATS_SEND} from "actions/chats";
-
-import update from 'react-addons-update';
 
 export const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -78,18 +80,42 @@ export const chatsReducer = (state = initialState, action) => {
             };
         case CHATS_SEND:
             return update(state, {
-                    entries: {
-                        [action.payload.chatId]: {
-                            messages: {
-                                $push: [{
-                                    text: action.payload.text,
-                                    author: action.payload.author,
-                                    time: action.payload.time
-                                }]
-                            }
+                entries: {
+                    [action.payload.chatId]: {
+                        messages: {
+                            $push: [{
+                                text: action.payload.text,
+                                author: action.payload.author,
+                                time: action.payload.time
+                            }]
+                        }
+                    },
+                },
+                lastMessageFrom: {
+                    $set: action.payload.author
+                }
+            });
+        case CHATS_ADD: {
+            const {chatId, name} = action.payload;
+            return update(state, {
+                entries: {
+                    $merge: {
+                        [chatId]: {
+                            name,
+                            messages: [],
                         }
                     }
-                });
+                }
+            })
+        }
+        case CHATS_DELETE: {
+            const {chatId} = action.payload;
+            return update(state, {
+                entries: {
+                    $unshift: [chatId]
+                }
+            })
+        }
         default:
             return state;
     }
